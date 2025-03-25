@@ -40,5 +40,5 @@ Este projeto é um programa em linguagem C que simula os movimentos das peças d
 - Interface gráfica para facilitar a interação.
 
 ## Autor
-Desenvolvido por [Seu Nome].
+Desenvolvido por [Guilherme Oliveira - GOpray-Prog].
 
