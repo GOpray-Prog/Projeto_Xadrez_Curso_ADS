@@ -3,12 +3,11 @@
 
 char coluna_inicial;  // Coluna inicial da peça
 int linha_inicial;    // Linha inicial da peça
-int final = 0;
-char peca;
 char direcao;
 int casas = 0;
 int contador = 1;
 int opcao = 0;
+int move_cavalo = 0;
 
 void ponto_inicial(){
 
@@ -158,13 +157,13 @@ void ponto_final(){
     } else if (opcao == 3) {  // Movimentação da Rainha
         printf("\nConforme seu tabuleiro, para onde deseja mover sua Rainha?\n");
         printf("F para Frente?\n");
-        printf("T para Trás?\n");
+        printf("T para Tras?\n");
         printf("D para Direita?\n");
         printf("E para Esquerda?\n");
         printf("L para Frente Diagonal Direita?\n");
         printf("O para Frente Diagonal Esquerda?\n");
-        printf("H para Trás Diagonal Direita?\n");
-        printf("J para Trás Diagonal Esquerda?\n");
+        printf("H para Tras Diagonal Direita?\n");
+        printf("J para Tras Diagonal Esquerda?\n");
         scanf(" %c", &direcao);
 
 
@@ -181,7 +180,7 @@ void ponto_final(){
                 printf("A Rainha pulou %d casa para Frente.\n", contador);
             }
             linha_inicial += casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'T':
@@ -192,7 +191,7 @@ void ponto_final(){
                 printf("A Rainha pulou %d casa para Tras.\n", contador);
             }
             linha_inicial -= casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'D':
@@ -203,7 +202,7 @@ void ponto_final(){
                 printf("A Rainha pulou %d casa para Direita.\n", contador);
             }
             coluna_inicial += casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'E':
@@ -214,7 +213,7 @@ void ponto_final(){
                 printf("A Rainha pulou %d casa para Esquerda.\n", contador);
             }
             coluna_inicial -= casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'L':
@@ -226,7 +225,7 @@ void ponto_final(){
             }
             coluna_inicial += casas;
             linha_inicial += casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'O':
@@ -238,7 +237,7 @@ void ponto_final(){
             }
             coluna_inicial -= casas;
             linha_inicial += casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'H':
@@ -250,7 +249,7 @@ void ponto_final(){
             }
             coluna_inicial += casas;
             linha_inicial -= casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'J':
@@ -262,14 +261,96 @@ void ponto_final(){
             }
             coluna_inicial -= casas;
             linha_inicial -= casas;
-            printf("A Rainha agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         default:
             printf("Movimento inválido!\n");
             break;
         }
+
+    }else if (opcao == 4) {  // Movimentação do Cavalo
+        printf("Conforme o seu tabuleiro, para onde desaja mover o Cavalo?\n");
+        printf("F para Frente-Frente-Direita?\n");
+        printf("T para Frente-Frente-Esquerda?\n");
+        printf("D para Tras-Tras-Direita?\n");
+        printf("E para Tras-Tras-Esquerda?\n");
+        scanf(" %c", &direcao);
+
+
+        casas = 2;
+        move_cavalo = 1;
+
+        switch (direcao) {
+        case 'F':
+        case 'f':
+        
+        while (move_cavalo--)
+        {
+           for (int i = 1; i <= casas ; i++)
+            {
+                printf("Cavalo pulou %d casa para Frente.\n", contador);
+            }
+            printf("Cavalo pulou para direita!\n");
+        }
+          
+            coluna_inicial += casas - 1;
+            linha_inicial += casas;
+            printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            break;
+
+        case 'T':
+        case 't':
+        
+        while (move_cavalo--)
+        {
+          for (int i = 1; i <= casas ; i++)
+          {
+              printf("Cavalo pulou %d casa para Frente!\n", contador);
+          }
+          printf("Cavalo pulou para Esquerda!\n");
+        }
+
+           coluna_inicial -= casas -1 ;
+           linha_inicial += casas;
+           printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+           break;
+
+        case 'D':
+        case 'd':
+        
+        while (move_cavalo--)
+        {
+          for (int i = 1; i <= casas ; i++)
+          {
+              printf("Cavalo pulou %d casa para Tras!\n", contador);
+          }
+          printf("Cavalo pulou para Direita!\n");
+        }
+           coluna_inicial += casas - 1;
+           linha_inicial -= casas;
+           printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+           break;
+
+        case 'E':
+        case 'e':
+
+        while (move_cavalo--)
+        {
+          for (int i = 1; i <= casas ; i++)
+          {
+              printf("Cavalo pulou %d casa para Tras!\n", contador);
+          }
+          printf("Cavalo pulou para Esquerda!\n");
+        }
+           coluna_inicial -= casas - 1;
+           linha_inicial -= casas;
+           printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+           break;
+
+        }
     }
+    
 }
 
 int main() 
@@ -277,7 +358,8 @@ int main()
 
     char continua[2]; 
     
-    printf("\nEste é seu Tabuleiro\n");
+    // Exemplo de um tabuleiro de xadrez
+    printf("Este é seu Tabuleiro\n");
     printf("   a b c d e f g h  \n");
     for (int linha = 8; linha >= 1; linha--)
     {
@@ -288,19 +370,16 @@ int main()
        }
        printf(" %d\n", linha);
     }
-    
     printf("   a b c d e f g h  \n");
 
    
-    
-
     do
     {
-    
-    printf("\nEscolha a peça Sua Peça:\n");
+    printf("\nEscolha sua Peça:\n");
     printf("1 - Torre\n");
     printf("2 - Bispo\n");
     printf("3 - Rainha\n");
+    printf("4 - Cavalo\n");
     scanf("%d", &opcao);
 
     ponto_inicial();
@@ -314,7 +393,7 @@ int main()
         printf("Fim de Jogo");
     }
     
-    } while (continua[0] == 's' || continua[0] == 'S');
+    } while (continua[0] == 's' || continua[0] == 'S'); // Estrutura de repetiçao para um jogo contiuo ou encerramento.
 
 
     return 0;

@@ -1,13 +1,13 @@
 # Simulador de Movimentos de Peças de Xadrez
 
 ## Descrição
-Este projeto é um programa em linguagem C que simula os movimentos das peças de xadrez Torre, Bispo e Rainha em um tabuleiro de 8x8. O usuário pode escolher a peça, definir a posição inicial e movimentá-la conforme as regras do jogo.
+Este projeto é um programa em linguagem C que simula os movimentos das peças de xadrez Torre, Bispo, Rainha e Cavalo em um tabuleiro de 8x8. O usuário pode escolher a peça, definir a posição inicial e movimentá-la conforme as regras do jogo.
 
 ## Funcionalidades
 - Exibição de um tabuleiro de xadrez vazio.
-- Escolha da peça (Torre, Bispo ou Rainha) para movimentação.
+- Escolha da peça (Torre, Bispo, Rainha ou Cavalo) para movimentação.
 - Definição da posição inicial da peça.
-- Escolha da direção e número de casas para movimentação.
+- Escolha da direção e número de casas para movimentação (exceto Cavalo, que segue seu padrão de movimento).
 - Simulação do deslocamento da peça no tabuleiro.
 - Possibilidade de continuar jogando após cada movimento.
 
@@ -28,9 +28,14 @@ Este projeto é um programa em linguagem C que simula os movimentos das peças d
   - 1 - Torre
   - 2 - Bispo
   - 3 - Rainha
+  - 4 - Cavalo
 - Insira a posição inicial no formato `coluna(letra)linha(número)`, por exemplo, `b1`.
-- Escolha a direção de movimento conforme as opções apresentadas.
-- Insira o número de casas que deseja mover.
+- Para Torre, Bispo e Rainha:
+  - Escolha a direção de movimento conforme as opções apresentadas.
+  - Insira o número de casas que deseja mover.
+- Para o Cavalo:
+  - O movimento segue o padrão "L" do xadrez (duas casas em uma direção e uma perpendicular).
+  - Escolha um dos movimentos válidos exibidos pelo programa.
 - Ao final de cada jogada, escolha `S` para continuar ou `N` para encerrar o jogo.
 
 ## Melhorias Futuras
