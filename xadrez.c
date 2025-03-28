@@ -5,9 +5,158 @@ char coluna_inicial;  // Coluna inicial da peça
 int linha_inicial;    // Linha inicial da peça
 char direcao;
 int casas = 0;
-int contador = 1;
 int opcao = 0;
-int move_cavalo = 0;
+
+// Movimentaçao do Cavalo com estrutura de repetiçao e multiplas variaveis
+void moverCavalo(){
+
+if (direcao == 'f' || direcao == 'F')
+{
+    for (int i = 1, j = 1; i <= casas; i++, j++)
+            {
+                    printf("Cavalo pulou para Frente.\n");
+            
+                if (j == 2)
+                {
+                    printf("Cavalo pulou para Direita!\n");
+                }               
+            }
+} else if (direcao == 't' || direcao =='T')
+{
+    for (int i = 1, j = 1; i <= casas; i++, j++)
+            {
+                    printf("Cavalo pulou para Frente.\n");
+            
+                if (j == 2)
+                {
+                    printf("Cavalo pulou para Esquerda!\n");
+                }               
+            }
+} else if (direcao == 'd' || direcao == 'D')
+{
+    for (int i = 1, j = 1; i <= casas; i++, j++)
+            {
+                    printf("Cavalo pulou para Tras.\n");
+            
+                if (j == 2)
+                {
+                    printf("Cavalo pulou para Direita!\n");
+                }               
+            }
+} else if (direcao == 'e' || direcao == 'E')
+{
+    for (int i = 1, j = 1; i <= casas; i++, j++)
+            {
+                    printf("Cavalo pulou para Tras.\n");
+            
+                if (j == 2)
+                {
+                    printf("Cavalo pulou para Esquerda!\n");
+                }               
+            }
+}
+
+}
+// Movimento do Bispo com estrutura de repetição recursiva aninhada
+void moverBispo(int interno){
+if (interno > 0)
+{
+    moverBispo(interno - 1);
+
+    if (direcao == 'l' || direcao == 'L')
+    {
+        printf("O Bispo pulou %d casa para Frente.\n", interno);
+    } else if (direcao == 'o' || direcao == 'O')
+    {
+        printf("O Bispo pulou %d casa para Frente.\n", interno);
+    } else if (direcao == 'h' || direcao == 'H')
+    {
+        printf("O Bispo pulou %d casa para Tras.\n", interno);
+    } else if (direcao == 'j' || direcao =='J')
+    {
+        printf("O Bispo pulou %d casa para Tras.\n", interno);
+    }       
+}
+} // Movimento do Bispo com estrutura de repetição recursiva aninhada
+void externoBispo(int externo){
+    if (externo > 0)
+    {
+      moverBispo(1);
+      externoBispo(externo - 1);
+
+      if (direcao == 'l' || direcao == 'L')
+      {
+        printf("O Bispo pulou %d casa para Direita.\n", externo);
+      }else if (direcao == 'o' || direcao == 'O')
+      {
+        printf("O Bispo pulou %d casa para Esquerda.\n", externo);
+      } else if (direcao == 'h' || direcao == 'H')
+      {
+        printf("O Bispo pulou %d casa para Direita.\n", externo);
+      } else if (direcao == 'j' || direcao == 'J')
+      {
+        printf("O Bispo pulou %d casa para Esquerda.\n", externo);
+      }     
+}            
+}
+
+// Estrutura de repetiçao Recursiva para o movimento da torre
+void moverTorre(int n){
+
+    if (n > 0)
+    {
+        moverTorre(n - 1);
+
+        if (direcao == 'f' || direcao == 'F')
+        {
+            printf("A Torre pulou %d casa para Frente.\n", n);
+        } else if (direcao == 't' || direcao == 'T')
+        {
+            printf("A Torre pulou %d casa para Tras.\n", n);
+        } else if (direcao == 'd' || direcao == 'D')
+        {
+            printf("A Torre pulou %d casa para Direita.\n", n);
+        } else if (direcao == 'e' || direcao == 'E')
+        {
+            printf("A Torre pulou %d casa para Esquerda.\n", n);
+        }
+    }
+    }
+
+// Estrutura de repetiçao Recursiva para o movimento da Rainha
+void moverRainha(int n){
+
+    if (n > 0)
+    {
+        moverRainha(n - 1);
+        
+        if (direcao == 'f' || direcao == 'F')
+        {
+            printf("A Rainha pulou %d casa para Frente.\n", n);
+        } else if (direcao == 't' || direcao == 'T')
+        {
+            printf("A Rainha pulou %d casa para Tras.\n", n);
+        } else if (direcao == 'd' || direcao == 'D')
+        {
+            printf("A Rainha pulou %d casa para Direita.\n", n);
+        } else if (direcao == 'e' || direcao == 'E')
+        {
+            printf("A Rainha pulou %d casa para Esquerda.\n", n);
+        }else if (direcao == 'l' || direcao == 'L')
+        {
+            printf("A Rainha pulou %d casa para Frente Diagonal Direita.\n", n);
+        } else if (direcao == 'o' || direcao == 'O')
+        {
+            printf("A Rainha pulou %d casa para Frente Diagonal Esquerda.\n", n);
+        } else if (direcao == 'h' || direcao == 'H')
+        {
+            printf("A Rainha pulou %d casa para Tras Diagonal Direita.\n", n);
+        }else if (direcao == 'j' || direcao == 'J')
+        {
+            printf("A Rainha pulou %d casa para Tras Diagonal Esquerda.\n", n);
+        }
+    }
+    }
 
 void ponto_inicial(){
 
@@ -27,7 +176,6 @@ void ponto_final(){
         printf("E para Esquerda?\n");
         scanf(" %c", &direcao);
 
-
         printf("\nQuantas casas deseja se mover?\n");
         scanf("%d", &casas);
         getchar();
@@ -35,44 +183,28 @@ void ponto_final(){
         switch (direcao) {
         case 'F':
         case 'f':
-
-        while (contador <= casas){ 
-            printf("A Torre pulou %d casa para Frente.\n", contador);
-            contador++;
-            }
+            moverTorre(casas);
             linha_inicial += casas;
             printf("A Torre agora está na posição %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'T':
         case 't':
-
-        while (contador <= casas){ 
-            printf("A Torre pulou %d casa para Tras.\n", contador);
-            contador++;
-            }
+            moverTorre(casas);
             linha_inicial -= casas;
             printf("A Torre agora está na posição %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'D':
         case 'd':      
-
-        while (contador <= casas){ 
-            printf("A Torre pulou %d casa para Direita.\n", contador);
-            contador++;
-            }
+            moverTorre(casas);
             coluna_inicial += casas;
             printf("A Torre agora está na posição %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'E':
         case 'e':
-     
-        while (contador <= casas){ 
-            printf("A Torre pulou %d casa para Esquerda.\n", contador);
-            contador++;
-            }
+            moverTorre(casas);  
             coluna_inicial -= casas;
             printf("A Torre agora está na posição %c%d\n", coluna_inicial, linha_inicial);
             break;
@@ -90,21 +222,13 @@ void ponto_final(){
         printf("J para Trás Diagonal Esquerda?\n");
         scanf(" %c", &direcao);
 
-        
-
         printf("\nQuantas casas deseja se mover?\n");
         scanf("%d", &casas);
        
-
         switch (direcao) {
         case 'L':
         case 'l':
-        do
-        {
-          printf("O Bispo pulou %d casa para Frente_Diagonal_Direita.\n", contador);
-          contador++;
-        } while (contador <= casas);
-
+            externoBispo(casas);
             coluna_inicial += casas;
             linha_inicial += casas;
             printf("O Bispo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -112,12 +236,7 @@ void ponto_final(){
 
         case 'O':
         case 'o':
-            do
-      {
-        printf("O Bispo pulou %d casa para Frente_Diagonal_Esquerda.\n", contador);
-        contador++;
-      } while (contador <= casas);
-
+            externoBispo(casas);
             coluna_inicial -= casas;
             linha_inicial += casas;
             printf("O Bispo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -125,12 +244,7 @@ void ponto_final(){
 
         case 'H':
         case 'h':
-           do
-      {
-        printf("O Bispo pulou %d casa para Tras Diagonal Direita.\n", contador);
-        contador++;
-      } while (contador <= casas);
-
+            externoBispo(casas);
             coluna_inicial += casas;
             linha_inicial -= casas;
             printf("O Bispo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -138,12 +252,7 @@ void ponto_final(){
 
         case 'J':
         case 'j':
-        do
-        {
-          printf("O Bispo pulou %d casa para Tras Diagonal Esquerda.\n", contador);
-          contador++;
-        } while (contador <= casas);
-
+            externoBispo(casas);
             coluna_inicial -= casas;
             linha_inicial -= casas;
             printf("O Bispo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -166,7 +275,6 @@ void ponto_final(){
         printf("J para Tras Diagonal Esquerda?\n");
         scanf(" %c", &direcao);
 
-
         printf("\nQuantas casas deseja se mover?\n");
         scanf("%d", &casas);
         getchar();
@@ -174,55 +282,35 @@ void ponto_final(){
         switch (direcao) {
         case 'F':
         case 'f':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Frente.\n", contador);
-            }
+            moverRainha(casas);
             linha_inicial += casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'T':
         case 't':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Tras.\n", contador);
-            }
+            moverRainha(casas);
             linha_inicial -= casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'D':
         case 'd':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Direita.\n", contador);
-            }
+            moverRainha(casas);    
             coluna_inicial += casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'E':
         case 'e':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Esquerda.\n", contador);
-            }
+            moverRainha(casas);
             coluna_inicial -= casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
             break;
 
         case 'L':
         case 'l':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Frente Diagonal Direita.\n", contador);
-            }
+            moverRainha(casas);
             coluna_inicial += casas;
             linha_inicial += casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
@@ -230,11 +318,7 @@ void ponto_final(){
 
         case 'O':
         case 'o':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Frente Diagonal Esquerda.\n", contador);
-            }
+            moverRainha(casas);
             coluna_inicial -= casas;
             linha_inicial += casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
@@ -242,11 +326,7 @@ void ponto_final(){
 
         case 'H':
         case 'h':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Tras Diagonal Direita.\n", contador);
-            }
+            moverRainha(casas);
             coluna_inicial += casas;
             linha_inicial -= casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
@@ -254,11 +334,7 @@ void ponto_final(){
 
         case 'J':
         case 'j':
-        
-            for (contador; contador <= casas ; contador++)
-            {
-                printf("A Rainha pulou %d casa para Tras Diagonal Esquerda.\n", contador);
-            }
+            moverRainha(casas);
             coluna_inicial -= casas;
             linha_inicial -= casas;
             printf("A Rainha agora esta na posicao %c%d\n", coluna_inicial, linha_inicial);
@@ -271,29 +347,18 @@ void ponto_final(){
 
     }else if (opcao == 4) {  // Movimentação do Cavalo
         printf("Conforme o seu tabuleiro, para onde desaja mover o Cavalo?\n");
-        printf("F para Frente-Frente-Direita?\n");
-        printf("T para Frente-Frente-Esquerda?\n");
-        printf("D para Tras-Tras-Direita?\n");
-        printf("E para Tras-Tras-Esquerda?\n");
+        printf("F para Frente Frente Direita?\n");
+        printf("T para Frente Frente Esquerda?\n");
+        printf("D para Tras Tras Direita?\n");
+        printf("E para Tras Tras Esquerda?\n");
         scanf(" %c", &direcao);
 
-
         casas = 2;
-        move_cavalo = 1;
 
         switch (direcao) {
         case 'F':
         case 'f':
-        
-        while (move_cavalo--)
-        {
-           for (int i = 1; i <= casas ; i++)
-            {
-                printf("Cavalo pulou %d casa para Frente.\n", contador);
-            }
-            printf("Cavalo pulou para direita!\n");
-        }
-          
+            moverCavalo();
             coluna_inicial += casas - 1;
             linha_inicial += casas;
             printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -301,16 +366,7 @@ void ponto_final(){
 
         case 'T':
         case 't':
-        
-        while (move_cavalo--)
-        {
-          for (int i = 1; i <= casas ; i++)
-          {
-              printf("Cavalo pulou %d casa para Frente!\n", contador);
-          }
-          printf("Cavalo pulou para Esquerda!\n");
-        }
-
+           moverCavalo();
            coluna_inicial -= casas -1 ;
            linha_inicial += casas;
            printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -318,15 +374,7 @@ void ponto_final(){
 
         case 'D':
         case 'd':
-        
-        while (move_cavalo--)
-        {
-          for (int i = 1; i <= casas ; i++)
-          {
-              printf("Cavalo pulou %d casa para Tras!\n", contador);
-          }
-          printf("Cavalo pulou para Direita!\n");
-        }
+           moverCavalo();
            coluna_inicial += casas - 1;
            linha_inicial -= casas;
            printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
@@ -334,15 +382,7 @@ void ponto_final(){
 
         case 'E':
         case 'e':
-
-        while (move_cavalo--)
-        {
-          for (int i = 1; i <= casas ; i++)
-          {
-              printf("Cavalo pulou %d casa para Tras!\n", contador);
-          }
-          printf("Cavalo pulou para Esquerda!\n");
-        }
+           moverCavalo();
            coluna_inicial -= casas - 1;
            linha_inicial -= casas;
            printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
