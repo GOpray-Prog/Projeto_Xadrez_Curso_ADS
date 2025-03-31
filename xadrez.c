@@ -6,7 +6,6 @@ int linha_inicial;    // Linha inicial da peça
 char direcao;
 int casas = 0;
 int opcao = 0;
-int move_cavalo = 0;
 
 // Movimentaçao do Cavalo com estrutura de repetiçao e multiplas variaveis
 void moverCavalo(){
@@ -345,7 +344,53 @@ void ponto_final(){
             printf("Movimento inválido!\n");
             break;
         }
+
+    }else if (opcao == 4) {  // Movimentação do Cavalo
+        printf("Conforme o seu tabuleiro, para onde desaja mover o Cavalo?\n");
+        printf("F para Frente Frente Direita?\n");
+        printf("T para Frente Frente Esquerda?\n");
+        printf("D para Tras Tras Direita?\n");
+        printf("E para Tras Tras Esquerda?\n");
+        scanf(" %c", &direcao);
+
+        casas = 2;
+
+        switch (direcao) {
+        case 'F':
+        case 'f':
+            moverCavalo();
+            coluna_inicial += casas - 1;
+            linha_inicial += casas;
+            printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+            break;
+
+        case 'T':
+        case 't':
+           moverCavalo();
+           coluna_inicial -= casas -1 ;
+           linha_inicial += casas;
+           printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+           break;
+
+        case 'D':
+        case 'd':
+           moverCavalo();
+           coluna_inicial += casas - 1;
+           linha_inicial -= casas;
+           printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+           break;
+
+        case 'E':
+        case 'e':
+           moverCavalo();
+           coluna_inicial -= casas - 1;
+           linha_inicial -= casas;
+           printf("O Cavalo agora está na posição %c%d\n", coluna_inicial, linha_inicial);
+           break;
+
+        }
     }
+    
 }
 
 int main() 
