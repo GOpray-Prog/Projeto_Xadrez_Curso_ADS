@@ -391,7 +391,7 @@ void ponto_final(){
         }
     }
     
-}
+]
 
 int main() 
 {
